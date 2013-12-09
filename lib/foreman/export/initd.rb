@@ -5,23 +5,17 @@ require 'foreman/cli'
 class Foreman::Export::Initd < Foreman::Export::Base
 
   def export
-    error("Must specify a location") unless location
+    error('Must specify a location') unless location
 
     cwd = Pathname.new(engine.root)
     export_to = Pathname.new(location)
 
     engine.each_process do |name, process|
-      1.upto(engine.formation[name]) do |num|
-        path = export_to.join("#{app}-#{name}-#{num}")
-        port = engine.port_for(process, num)
-        env = engine.env.merge("PORT" => port)
+      path = export_to.join("#{app}-#{name}")
+      command = Pathname.new(cwd).join(process.command)
 
-        puts path
-        puts port
-        puts env
-        puts cwd
-
-      end
+      initscript = Initd::Script.new path, command
+      initscript.export
     end
   end
 end
