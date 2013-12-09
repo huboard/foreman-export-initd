@@ -12,10 +12,12 @@
 
 NAME=<%= name %>
 DESC=<%= description %>
+CONCURRENCY=<%= concurrency %>
 DAEMON=<%= daemon[:script] %>
+DAEMON_USER=<%= daemon[:user] %>
 PIDDIR=/var/run/<%= daemon[:name] %>
 PIDFILE=${PIDDIR}/<%= daemon[:name] %>.pid
-DAEMON_ARGS=<%= daemon[:args].shellescape %>
+DAEMON_ARGS="<%= daemon[:args] %>"
 
 test -x ${DAEMON} || exit 0
 set -e
@@ -26,7 +28,7 @@ case "${1}" in
 	start)
 		log_daemon_msg "Starting ${DESC}" "${NAME}"
 		mkdir -p ${PIDDIR}
-		if (start-stop-daemon --start --startas $DAEMON --make-pidfile --background --pidfile $PIDFILE -- $DAEMON_ARGS); then
+		if (start-stop-daemon --start --startas $DAEMON --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER -- $DAEMON_ARGS); then
 			log_end_msg 0
 		else
 			log_end_msg 1

@@ -10,8 +10,9 @@ class Foreman::Export::Initd < Foreman::Export::Base
       path = export_to.join("#{app}-#{name}")
       args = process.command.split(/\s+/)
       script = Pathname.new(cwd).join(args.shift)
+      concurrency = engine.formation[name]
 
-      initscript = Initd::Script.new path, script, args
+      initscript = Initd::Script.new path, script, args, concurrency, user
       initscript.export
     end
   end
