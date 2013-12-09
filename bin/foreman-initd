@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+
+require '../lib/foreman-export-initd'
+require 'foreman/cli'
+
+Foreman::CLI.start
