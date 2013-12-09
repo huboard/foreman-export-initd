@@ -28,7 +28,7 @@ case "${1}" in
 	start)
 		log_daemon_msg "Starting ${DESC}" "${NAME}"
 		mkdir -p ${PIDDIR}
-		if (start-stop-daemon --start --startas $DAEMON --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER -- $DAEMON_ARGS); then
+		if (start-stop-daemon --start--make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON -- $DAEMON_ARGS); then
 			log_end_msg 0
 		else
 			log_end_msg 1
@@ -36,7 +36,7 @@ case "${1}" in
 	;;
 	stop)
 		log_daemon_msg "Stopping ${DESC}" "${NAME}"
-		if (start-stop-daemon --stop --oknodo --retry 20 --pidfile $PIDFILE); then
+		if (start-stop-daemon --stop --oknodo --retry 20 --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON); then
 			log_end_msg 0
 		else
 			log_end_msg 1
