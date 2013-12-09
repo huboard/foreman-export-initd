@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 
-require '../lib/foreman-export-initd'
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+require 'foreman-export-initd'
 require 'foreman/cli'
 
 Foreman::CLI.start
