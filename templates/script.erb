@@ -12,12 +12,11 @@
 
 NAME=<%= name %>
 DESC=<%= description %>
-CONCURRENCY=<%= concurrency %>
 DAEMON=<%= daemon[:script] %>
 DAEMON_USER=<%= daemon[:user] %>
 PIDDIR=/var/run/<%= daemon[:name] %>
 PIDFILE=${PIDDIR}/<%= daemon[:name] %>.pid
-DAEMON_ARGS="<%= daemon[:args] %>"
+DAEMON_ARGS=<%= daemon[:args].shellescape %>
 
 test -x ${DAEMON} || exit 0
 set -e

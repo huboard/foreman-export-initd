@@ -1,12 +1,12 @@
 class Initd::Script
 
-  attr_reader :daemon, :name, :description, :concurrency
+  attr_reader :daemon, :name, :description
 
   def templates_dir
     Pathname.new(__FILE__).dirname.dirname.dirname.join('templates')
   end
 
-  def initialize(path, script, args, concurrency, user)
+  def initialize(path, script, args, user)
     @path = path
     @daemon = {
         :name => path.basename,
@@ -16,7 +16,6 @@ class Initd::Script
     }
     @name = @daemon[:name]
     @description = @daemon[:name]
-    @concurrency = concurrency
   end
 
   def content

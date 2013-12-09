@@ -16,7 +16,9 @@ class Foreman::Export::Initd < Foreman::Export::Base
         File.unlink filename
       end
       if concurrency > 0
-        initscript = Initd::Script.new path, script, args, concurrency, user
+        say 'Warning: Initd exporter ignores concurrency > 1' if concurrency > 1
+        initscript = Initd::Script.new path, script, args, user
+        say 'Exporting ' + path.to_s
         initscript.export
       end
     end
