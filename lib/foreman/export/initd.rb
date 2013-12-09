@@ -1,7 +1,3 @@
-require 'pathname'
-require 'foreman/export'
-require 'foreman/cli'
-
 class Foreman::Export::Initd < Foreman::Export::Base
 
   def export
@@ -12,9 +8,10 @@ class Foreman::Export::Initd < Foreman::Export::Base
 
     engine.each_process do |name, process|
       path = export_to.join("#{app}-#{name}")
-      command = Pathname.new(cwd).join(process.command)
+      args = process.command.split(/\s+/)
+      script = Pathname.new(cwd).join(args.shift)
 
-      initscript = Initd::Script.new path, command
+      initscript = Initd::Script.new path, script, args
       initscript.export
     end
   end

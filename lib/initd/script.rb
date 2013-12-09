@@ -1,14 +1,25 @@
-require 'fileutils'
-
 class Initd::Script
 
-  def initialize(path, command)
+  attr_reader :daemon, :name, :description
+
+  def templates_dir
+    Pathname.new(__FILE__).dirname.dirname.dirname.join('templates')
+  end
+
+  def initialize(path, script, args)
     @path = path
-    @command = command
+    @daemon = {
+        :name => path.basename,
+        :script => script,
+        :args => args.join(' '),
+    }
+    @name = @daemon[:name]
+    @description = @daemon[:name]
   end
 
   def content
-    @command
+    template = templates_dir.join('script.erb')
+    ERB.new(template.read, nil, '<>').result(binding)
   end
 
   def export
