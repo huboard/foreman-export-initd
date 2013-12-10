@@ -5,7 +5,8 @@ class Foreman::Export::Initd < Foreman::Export::Base
 
     cwd = Pathname.new(engine.root)
     export_path = Pathname.new(location)
-    create_directory export_path
+    say "creating: #{export_path}"
+    FileUtils.mkdir_p(export_path)
 
     existing = []
     Dir.glob export_path.join("#{app}-*") do |filename|
