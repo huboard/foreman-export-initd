@@ -1,4 +1,4 @@
-### Initd script foreman exporter
+# Initd script foreman exporter
 
 Usage:
 ```
