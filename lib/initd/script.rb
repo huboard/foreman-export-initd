@@ -1,6 +1,6 @@
 class Initd::Script
 
-  attr_reader :daemon, :name, :description
+  attr_reader :daemon, :path, :description
 
   def templates_dir
     Pathname.new(__FILE__).dirname.dirname.dirname.join('templates')
@@ -9,13 +9,16 @@ class Initd::Script
   def initialize(path, script, args, user)
     @path = path
     @daemon = {
-        :name => path.basename.to_s,
+        :name => name,
         :script => script,
         :args => args.join(' '),
         :user => user,
     }
-    @name = @daemon[:name]
-    @description = @daemon[:name]
+    @description = name
+  end
+
+  def name
+    path.basename.to_s
   end
 
   def pidfile
