@@ -9,13 +9,17 @@ class Initd::Script
   def initialize(path, script, args, user)
     @path = path
     @daemon = {
-        :name => path.basename,
+        :name => path.basename.to_s,
         :script => script,
         :args => args.join(' '),
-        :user => user
+        :user => user,
     }
     @name = @daemon[:name]
     @description = @daemon[:name]
+  end
+
+  def pidfile
+    Pathname.new('/var/run').join(@daemon[:name]).join("#{@daemon[:name]}.pid")
   end
 
   def content

@@ -16,8 +16,8 @@ NAME=<%= name %>
 DESC=<%= description %>
 DAEMON=<%= daemon[:script] %>
 DAEMON_USER=<%= daemon[:user] %>
-PIDDIR=/var/run/<%= daemon[:name] %>
-PIDFILE=${PIDDIR}/<%= daemon[:name] %>.pid
+PIDDIR=<%= pidfile.dirname %>
+PIDFILE=<%= pidfile %>
 DAEMON_ARGS=<%= daemon[:args].shellescape %>
 
 test -x ${DAEMON} || exit 0
