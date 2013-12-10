@@ -26,10 +26,4 @@ class Initd::Script
     template = templates_dir.join('script.erb')
     ERB.new(template.read, nil, '<>').result(binding)
   end
-
-  def export
-    FileUtils.mkdir_p(File.dirname(@path))
-    File.new(@path, 'w').write(content)
-    File.chmod(0755, @path)
-  end
 end
