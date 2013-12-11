@@ -29,7 +29,7 @@ class Foreman::Export::InitdMonit < Foreman::Export::Base
 
     to_remove = existing - exported
     to_remove.each do |filename|
-      say 'Removing ' + filename
+      say 'removing ' + filename
       File.unlink filename
     end
   end
