@@ -16,7 +16,7 @@ end
 def write_procfile (path)
   File.open(path, 'w') do |file|
     file.puts 'foo: ./foo-script'
-    file.puts 'bar: ./bar-script'
+    file.puts 'bar: ./bar-script argument1'
   end
   File.expand_path(path)
 end
