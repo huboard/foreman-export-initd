@@ -5,7 +5,11 @@ RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true
 
   c.before(:all) do
-    #FakeFS.activate!
+    FakeFS.activate!
+  end
+
+  c.after(:all) do
+    FakeFS.deactivate!
   end
 end
 
@@ -17,9 +21,10 @@ def write_procfile (path)
   File.expand_path(path)
 end
 
-def export_stub (name)
+def spec_resource (name)
   FakeFS.deactivate!
   path = Pathname.new(File.expand_path('../resources/stubs', __FILE__)).join(name)
-  File.new(path ,'r').read
-  #FakeFS.activate!
+  contents = File.new(path ,'r').read
+  FakeFS.activate!
+  contents
 end

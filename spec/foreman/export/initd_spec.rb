@@ -12,8 +12,8 @@ describe Foreman::Export::Initd, :fakefs do
 
   it 'exports to the filesystem' do
     initd.export
-    File.read('/tmp/initd/app-foo').should == export_stub('initd/app-foo')
-    File.read('/tmp/initd/app-bar').should == export_stub('initd/app-bar')
+    File.read('/tmp/initd/app-foo').should == spec_resource('initd/app-foo')
+    File.read('/tmp/initd/app-bar').should == spec_resource('initd/app-bar')
   end
 
 end
