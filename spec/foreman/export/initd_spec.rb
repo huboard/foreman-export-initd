@@ -15,5 +15,4 @@ describe Foreman::Export::Initd, :fakefs do
     File.read('/tmp/initd/app-foo').should == spec_resource('initd/app-foo')
     File.read('/tmp/initd/app-bar').should == spec_resource('initd/app-bar')
   end
-
 end
