@@ -1,12 +1,13 @@
 class Initd::MonitConfig
 
-  attr_reader :path
+  attr_reader :app, :path
 
   def templates_dir
     Pathname.new(__FILE__).dirname.dirname.dirname.join('templates')
   end
 
-  def initialize(path)
+  def initialize(app, path)
+    @app = app
     @path = path
   end
 

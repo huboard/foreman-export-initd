@@ -20,7 +20,7 @@ class Foreman::Export::InitdMonit < Foreman::Export::Base
       concurrency = engine.formation[name]
       if concurrency > 0
         say 'Warning: Initd exporter ignores concurrency > 1' if concurrency > 1
-        contents = Initd::MonitConfig.new(path).content
+        contents = Initd::MonitConfig.new(app, path).content
         write_file(path, contents)
         File.chmod(0755, path)
         exported.push path.to_s
