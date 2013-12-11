@@ -17,8 +17,6 @@ class Foreman::Export::InitdMonit < Foreman::Export::Base
     exported = []
     engine.each_process do |name, process|
       path = export_path.join("#{app}-#{name}")
-      args = process.command.split(/\s+/)
-      script = Pathname.new(cwd).join(args.shift)
       concurrency = engine.formation[name]
       if concurrency > 0
         say 'Warning: Initd exporter ignores concurrency > 1' if concurrency > 1
