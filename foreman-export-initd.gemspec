@@ -4,6 +4,11 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'foreman', '>= 0.59.0'
 
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec', '>= 2.0'
+  gem.add_development_dependency 'rake', '>= 0.4.3'
+  gem.add_development_dependency 'fakefs', '>= 0.4.3'
+
   gem.summary = 'init.d export scripts for foreman'
   gem.description = 'init.d export scripts for foreman'
 
