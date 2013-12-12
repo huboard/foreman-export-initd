@@ -13,14 +13,6 @@ RSpec.configure do |c|
   end
 end
 
-def write_procfile (path)
-  File.open(path, 'w') do |file|
-    file.puts 'foo: ./foo-script'
-    file.puts 'bar: ./bar-script argument1'
-  end
-  File.expand_path(path)
-end
-
 def spec_resource (name)
   FakeFS.deactivate!
   path = Pathname.new(File.expand_path('../resources/stubs', __FILE__)).join(name)

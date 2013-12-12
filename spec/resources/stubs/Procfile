@@ -1,0 +1,2 @@
+foo: ./foo-script
+bar: ./bar-script argument1
