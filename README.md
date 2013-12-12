@@ -5,6 +5,6 @@
 Usage:
 ```
 gem install foreman-export-initd
-foreman-initd export initd /etc/init.d
-foreman-initd export initd-monit /etc/monit/conf.d
+foreman export initd /etc/init.d
+foreman export initd-monit /etc/monit/conf.d
 ```

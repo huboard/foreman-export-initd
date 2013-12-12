@@ -1,3 +1,5 @@
+require 'foreman-export-initd'
+
 class Foreman::Export::Initd < Foreman::Export::Base
 
   def export
