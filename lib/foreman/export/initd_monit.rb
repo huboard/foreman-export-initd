@@ -5,7 +5,6 @@ class Foreman::Export::InitdMonit < Foreman::Export::Base
   def export
     error('Must specify a location') unless location
 
-    cwd = Pathname.new(engine.root)
     export_path = Pathname.new(location)
     say "creating: #{export_path}"
     FileUtils.mkdir_p(export_path)
