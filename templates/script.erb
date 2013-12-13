@@ -14,7 +14,7 @@
 
 NAME=<%= Shellwords.escape name %>
 DESC=<%= Shellwords.escape description %>
-DAEMON=<%= Shellwords.escape daemon[:script] %>
+DAEMON=<%= Shellwords.escape daemon[:script].to_s %>
 DAEMON_USER=<%= Shellwords.escape daemon[:user] %>
 PIDDIR=<%= Shellwords.escape pidfile.dirname %>
 PIDFILE=<%= Shellwords.escape pidfile %>
