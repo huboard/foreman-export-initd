@@ -11,13 +11,13 @@ describe Foreman::Export::InitdMonit, :fakefs do
       file.path
     end
   end
-  let(:options) { Hash.new }
+  let(:options) { {:app => 'custom-app', :user => 'dummy'} }
   let(:engine) { Foreman::Engine.new().load_procfile(procfile) }
   let(:initd) { Foreman::Export::InitdMonit.new('/tmp/monit', engine, options) }
 
   it 'exports to the filesystem' do
     initd.export
-    File.read('/tmp/monit/app-foo').should == spec_resource('initd_monit/app-foo')
-    File.read('/tmp/monit/app-bar').should == spec_resource('initd_monit/app-bar')
+    File.read('/tmp/monit/custom-app-foo').should == spec_resource('initd_monit/custom-app-foo')
+    File.read('/tmp/monit/custom-app-bar').should == spec_resource('initd_monit/custom-app-bar')
   end
 end

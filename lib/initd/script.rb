@@ -18,7 +18,7 @@ class Initd::Script
   end
 
   def name
-    path.basename.to_s
+    @path.basename.to_s
   end
 
   def pidfile
