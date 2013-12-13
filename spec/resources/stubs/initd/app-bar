@@ -18,7 +18,6 @@ DAEMON=/tmp/app/bar-script
 DAEMON_USER=app
 PIDDIR=/var/run/app-bar
 PIDFILE=/var/run/app-bar/app-bar.pid
-DAEMON_ARGS=argument1
 
 test -x ${DAEMON} || exit 0
 set -e
@@ -29,7 +28,7 @@ case "${1}" in
 	start)
 		log_daemon_msg "Starting ${DESC}" "${NAME}"
 		mkdir -p ${PIDDIR}
-		if (start-stop-daemon --start --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON -- $DAEMON_ARGS); then
+		if (start-stop-daemon --start --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON -- argument1); then
 			log_end_msg 0
 		else
 			log_end_msg 1

@@ -19,7 +19,7 @@ class Foreman::Export::Initd < Foreman::Export::Base
     exported = []
     engine.each_process do |name, process|
       path = export_path.join("#{app}-#{name}")
-      args = process.command.split(/\s+/)
+      args = Shellwords.split(process.command)
       script = Pathname.new(cwd).join(args.shift)
       concurrency = engine.formation[name]
       if concurrency > 0
