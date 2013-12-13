@@ -8,6 +8,7 @@ describe Foreman::Export::InitdMonit, :fakefs do
     FileUtils.mkdir_p('/tmp/app');
     file = File.new('/tmp/app/Procfile', 'w')
     file.write spec_resource('Procfile')
+    file.close
     file.path
   end
   let(:options) { Hash.new }
