@@ -6,10 +6,10 @@ require 'tmpdir'
 describe Foreman::Export::Initd, :fakefs do
   let(:procfile) do
     FileUtils.mkdir_p('/tmp/app')
-    file = File.new('/tmp/app/Procfile', 'w')
-    file.write spec_resource('Procfile')
-    file.close
-    file.path
+    File.open('/tmp/app/Procfile', 'w') do |file|
+      file.write spec_resource('Procfile')
+      file.path
+    end
   end
   let(:options) { Hash.new }
   let(:engine) { Foreman::Engine.new().load_procfile(procfile) }
