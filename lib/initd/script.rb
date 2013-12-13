@@ -11,7 +11,7 @@ class Initd::Script
     @daemon = {
         :name => name,
         :script => script,
-        :args => args.join(' '),
+        :args => args,
         :user => user,
     }
     @description = name

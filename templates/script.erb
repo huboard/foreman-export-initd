@@ -12,13 +12,12 @@
 # Description:          <%= description %>
 ### END INIT INFO
 
-NAME=<%= name %>
-DESC=<%= description %>
-DAEMON=<%= daemon[:script] %>
-DAEMON_USER=<%= daemon[:user] %>
-PIDDIR=<%= pidfile.dirname %>
-PIDFILE=<%= pidfile %>
-DAEMON_ARGS=<%= daemon[:args].shellescape %>
+NAME=<%= Shellwords.escape name %>
+DESC=<%= Shellwords.escape description %>
+DAEMON=<%= Shellwords.escape daemon[:script] %>
+DAEMON_USER=<%= Shellwords.escape daemon[:user] %>
+PIDDIR=<%= Shellwords.escape pidfile.dirname %>
+PIDFILE=<%= Shellwords.escape pidfile %>
 
 test -x ${DAEMON} || exit 0
 set -e
@@ -29,7 +28,7 @@ case "${1}" in
 	start)
 		log_daemon_msg "Starting ${DESC}" "${NAME}"
 		mkdir -p ${PIDDIR}
-		if (start-stop-daemon --start --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON -- $DAEMON_ARGS); then
+		if (start-stop-daemon --start --make-pidfile --background --pidfile $PIDFILE --chuid $DAEMON_USER --exec $DAEMON -- <%= Shellwords.join daemon[:args] %>); then
 			log_end_msg 0
 		else
 			log_end_msg 1
