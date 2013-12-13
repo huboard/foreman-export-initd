@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name    = 'foreman-export-initd'
-  gem.version = '0.0.5'
+  gem.version = '0.0.6'
 
   gem.add_dependency 'foreman', '>= 0.59.0'
 
@@ -20,6 +20,4 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files = %w(README.md)
 
   gem.files = Dir['{bin,lib,templates}/**/*', 'README.md']
-
-  gem.executables = 'foreman-initd'
 end
