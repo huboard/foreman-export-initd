@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name    = 'foreman-export-initd'
-  gem.version = '0.0.6'
+  gem.version = '0.0.7'
 
   gem.add_dependency 'foreman', '>= 0.59.0'
 
