@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.summary = 'init.d export scripts for foreman'
   gem.description = 'init.d export scripts for foreman'
 
-  gem.authors  = ['Tomasz Durka', 'Cargomedia']
-  gem.email    = 'tomasz@durka.pl'
-  gem.homepage = 'http://github.com/tomaszdurka/foreman-export-initd'
+  gem.authors  = ['Tomasz Durka', 'Cargo Media']
+  gem.email    = 'tomasz.durka@cargomedia.ch'
+  gem.homepage = 'http://github.com/cargomedia/foreman-export-initd'
 
   gem.has_rdoc = false
   gem.extra_rdoc_files = %w(README.md)
