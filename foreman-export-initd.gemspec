@@ -18,5 +18,5 @@ Gem::Specification.new do |gem|
   gem.has_rdoc = false
   gem.extra_rdoc_files = %w(README.md)
 
-  gem.files = Dir['{bin,lib,templates}/**/*', 'README.md']
+  gem.files = Dir['{bin,lib,templates}/**/*', 'README*', 'LICENSE*']
 end
