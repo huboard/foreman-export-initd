@@ -1,6 +1,6 @@
 # Initd script foreman exporter
 
-[![Build Status](https://travis-ci.org/tomaszdurka/foreman-export-initd.png?branch=master)](https://travis-ci.org/tomaszdurka/foreman-export-initd)
+[![Build Status](https://travis-ci.org/cargomedia/foreman-export-initd.png?branch=master)](https://travis-ci.org/cargomedia/foreman-export-initd)
 
 Usage:
 ```
