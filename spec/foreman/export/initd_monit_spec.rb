@@ -7,7 +7,7 @@ describe Foreman::Export::InitdMonit, :fakefs do
   let(:procfile) do
     FileUtils.mkdir_p('/tmp/app')
     File.open('/tmp/app/Procfile', 'w') do |file|
-      file.write spec_resource('Procfile')
+      file.write spec_resource('Procfile-initial')
       file.path
     end
   end
