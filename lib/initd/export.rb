@@ -28,7 +28,6 @@ module Initd::Export
   def export_file (path, contents)
     write_file(path, contents)
     File.chmod(0755, path)
-    puts path.inspect
     @exported.push path
   end
 
