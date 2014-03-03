@@ -1,7 +1,7 @@
 module Initd::Export
 
   def export_path
-    Pathname.new location
+    Pathname.new(location).expand_path
   end
 
   def setup
