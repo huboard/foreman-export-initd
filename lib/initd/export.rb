@@ -38,9 +38,4 @@ module Initd::Export
   def path(name)
     export_path.join("#{app}-#{name}")
   end
-
-  def exec_command command
-    system(command)
-    raise "Command failed `#{command}`" unless $?.success?
-  end
 end
