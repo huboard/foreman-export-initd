@@ -16,22 +16,8 @@ class Foreman::Export::Initd < Foreman::Export::Base
         say 'Warning: Initd exporter ignores concurrency > 1' if concurrency > 1
         contents = Initd::Script.new(path, script, args, user).content
         export_file path, contents
-        if system_export?
-          exec_command "update-rc.d #{path.basename} defaults"
-        end
       end
     end
     cleanup
-  end
-
-  def remove path
-    super
-    if system_export?
-      exec_command "update-rc.d -f #{path.basename} remove"
-    end
-  end
-
-  def system_export?
-    export_path.expand_path.eql? Pathname.new('/etc/init.d')
   end
 end
