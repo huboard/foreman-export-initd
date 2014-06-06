@@ -3,4 +3,4 @@ check process custom-app-bar with pidfile /var/run/custom-app-bar/custom-app-bar
 	group custom-app
 	start program = "/etc/init.d/custom-app-bar start"
 	stop  program = "/etc/init.d/custom-app-bar stop"
-	if 25 restarts within 50 cycles then timeout
+	if 25 restarts within 50 cycles
