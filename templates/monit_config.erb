@@ -3,4 +3,3 @@ check process <%= name.shellescape %> with pidfile <%= pidfile.to_s.shellescape 
 	group <%= app %>
 	start program = "/etc/init.d/<%= name %> start"
 	stop  program = "/etc/init.d/<%= name %> stop"
-	if 25 restarts within 50 cycles

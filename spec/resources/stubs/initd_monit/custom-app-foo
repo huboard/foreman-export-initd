@@ -3,4 +3,3 @@ check process custom-app-foo with pidfile /var/run/custom-app-foo/custom-app-foo
 	group custom-app
 	start program = "/etc/init.d/custom-app-foo start"
 	stop  program = "/etc/init.d/custom-app-foo stop"
-	if 25 restarts within 50 cycles
