@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name        = 'foreman-export-initd'
-  gem.version     = '0.1.0'
+  gem.version     = '0.1.1'
   gem.summary     = 'init.d export scripts for foreman'
   gem.description = 'Foreman-exporter to create init.d- and monit-scripts'
   gem.authors     = ['Cargo Media', 'Tomasz Durka']
